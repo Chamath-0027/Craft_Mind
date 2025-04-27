@@ -24,7 +24,7 @@ const SkillResults = ({ results, onClose }) => {
                 </div>
               </div>
             </div>
-
+          
             {/* Wrong Answers Card */}
             <div className="bg-facebook-card p-4 rounded-lg border border-facebook-divider">
               <div className="flex items-center justify-between">
@@ -97,5 +97,17 @@ const SkillResults = ({ results, onClose }) => {
     </div>
   );
 };
-
+/*  <div className="bg-facebook-card p-4 rounded-lg border border-facebook-divider">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-facebook-text-primary font-medium">Wrong Answers</div>
+                  <div className="text-2xl font-bold text-facebook-primary">{results.wrongAnswers}</div>
+                </div>
+                <div className="bg-facebook-hover/10 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+              </div>
+            </div> */
 export default SkillResults;
