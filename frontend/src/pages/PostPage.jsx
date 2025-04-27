@@ -43,3 +43,17 @@ const PostPage = () => {
 };
 
 export default PostPage;
+
+/*
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+      <div ref={commentListRef}>
+        <CommentList postId={postId} userId={currentUser?.id} />
+      </div>
+    </div>
+  );
+};
+*/
+
