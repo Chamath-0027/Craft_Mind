@@ -92,6 +92,22 @@ const LikeButton = ({ postId, initialLikeCount = 0, userId, onLikeUpdate, compac
       </svg>
       <span>{likeCount}</span>
     </button>
+
+    const checkLikeStatus = async () => {
+      if (!postId || !userId) return;
+      try {
+        const response = await getLikeCount(postId, userId);
+        setLikeCount(response.likeCount);
+        setIsLiked(response.hasLiked);
+        setError(null);
+      } catch (error) {
+        if (error.response?.status === 404) {
+          setError('Post not available');
+          setLikeCount(0);
+          setIsLiked(false);
+        }
+      }
+    };
     */
 
 export default LikeButton;
