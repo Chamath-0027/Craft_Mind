@@ -12,6 +12,19 @@ const CommentForm = ({ postId, userId, onCommentAdded, commentId, initialText, i
   const [text, setText] = useState(initialText || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  try {
+      let response;
+      
+      if (commentId && isEditing) {
+        // Edit existing comment
+        response = await editComment(commentId, userId, text);
+        if (onCancelEdit) onCancelEdit();
+      } else {
+        // Add new comment and ensure it has a unique ID
+        response = await addComment(postId, userId, text);
+        setText('');
+      }
+
 */
 
   // Reset form when initialText changes (for editing)
