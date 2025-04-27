@@ -39,7 +39,7 @@ const SkillQuiz = ({ onComplete }) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      submitQuiz();
+      submitQuizs();
     }
   };*/ 
   const handleAnswer = (answer) => {
