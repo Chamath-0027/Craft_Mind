@@ -1,0 +1,37 @@
+[
+  {
+    "question": "Which tool do you enjoy using most?",
+    "options": ["Paintbrush", "Knitting Needles", "Hammer", "Sewing Machine"],
+    "correctAnswer": ["Paintbrush", "Sewing Machine"],
+    "category": "Tools",
+    "points": 10
+  },
+  {
+    "question": "What type of project excites you the most?",
+    "options": ["Creating a landscape painting", "Knitting a cozy scarf", "Building a wooden shelf", "Sewing a custom dress"],
+    "correctAnswer": ["Creating a landscape painting", "Building a wooden shelf"],
+    "category": "Projects",
+    "points": 10
+  },
+  {
+    "question": "Which activity do you find most relaxing?",
+    "options": ["Mixing colors on a palette", "The rhythmic motion of knitting", "Sanding wood to a smooth finish", "The hum of a sewing machine"],
+    "correctAnswer": ["The rhythmic motion of knitting", "Sanding wood to a smooth finish"],
+    "category": "Relaxation",
+    "points": 10
+  },
+  {
+    "question": "If you had to choose a hobby for a rainy day, what would it be?",
+    "options": ["Painting a still life", "Knitting a pair of socks", "Carving a small wooden figure", "Quilting a blanket"],
+    "correctAnswer": ["Painting a still life", "Quilting a blanket"],
+    "category": "Hobbies",
+    "points": 10
+  },
+  {
+    "question": "Which of these materials do you prefer working with?",
+    "options": ["Canvas and paints", "Yarn and needles", "Wood and tools", "Fabric and thread"],
+    "correctAnswer": ["Canvas and paints", "Fabric and thread"],
+    "category": "Materials",
+    "points": 10
+  }
+]
