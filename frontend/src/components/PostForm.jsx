@@ -300,3 +300,24 @@ const PostForm = ({ onPostCreated, initialData, isEditing, onCancel }) => {
 };
 
 export default PostForm;
+
+/*
+  <div className="mb-4">
+    <label htmlFor="video" className="block text-sm font-medium text-gray-700 mb-1">
+      Video (optional, max 30 seconds)
+    </label>
+    <input
+      type="file"
+      accept="video/*"
+      onChange={handleVideoUpload}
+      className="w-full p-2 border border-gray-300 rounded-md"
+    />
+    {videoPreview && (
+      <video
+        src={videoPreview}
+        controls
+        className="mt-2 max-h-48 rounded-md"
+      />
+    )}
+  </div>
+*/
