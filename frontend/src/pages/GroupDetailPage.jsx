@@ -278,3 +278,18 @@ const GroupDetailPage = () => {
 };
 
 export default GroupDetailPage;
+
+
+
+
+/*Notification_&_Group
+
+
+<div className="space-y-2">
+          {posts.map(post => (
+            <div key={post.id} className="relative">
+              {isOwner && (
+                <button
+                  onClick={() => handleRemovePost(post.id)}
+                  className="absolute top-2 right-2 z-10 bg-red-500 text-white px-2 py-1 rounded text-sm"
+                >*/
