@@ -88,5 +88,11 @@ const CommentItem = ({ comment, userId, onDelete, onUpdate }) => {
     </div>
   );
 };
-
+/*const CommentItem = ({ comment, userId, onDelete, onUpdate }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const isOwner = userId === comment.userId;
+  const formattedDate = new Date(comment.createdAt).toLocaleString();
+  */
 export default CommentItem;
