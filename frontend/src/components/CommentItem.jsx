@@ -95,4 +95,23 @@ const CommentItem = ({ comment, userId, onDelete, onUpdate }) => {
   const isOwner = userId === comment.userId;
   const formattedDate = new Date(comment.createdAt).toLocaleString();
   */
+ /*const handleDelete = async () => {
+    if (!isOwner || isDeleting) return;
+    
+    const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
+    if (!confirmDelete) return;
+    
+    setIsDeleting(true);
+    
+    try {
+      await deleteComment(comment.id, userId);
+      if (onDelete) {
+        onDelete(comment.id);
+      }
+    } catch (error) {
+      console.error('Error deleting comment:', error);
+      setIsDeleting(false);
+    }
+  };
+  */
 export default CommentItem;
