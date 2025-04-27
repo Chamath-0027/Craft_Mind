@@ -688,3 +688,12 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+/*</button>
+<button
+  onClick={() => setActiveTab('achievements')}
+  className={`px-6 py-3 ${
+    activeTab === 'achievements' 
+      ? 'border-b-2 border-blue-500 text-blue-500' 
+      : 'text-gray-500'
+  }`}
+>*/
