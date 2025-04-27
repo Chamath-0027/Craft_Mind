@@ -77,5 +77,21 @@ const LikeButton = ({ postId, initialLikeCount = 0, userId, onLikeUpdate, compac
     </button>
   );
 };
+/*<button 
+      onClick={handleToggleLike}
+      disabled={loading || !userId}
+      className={`flex items-center gap-1 ${isLiked ? 'text-blue-600' : 'text-gray-600'}`}
+    >
+      <svg 
+        className={`w-5 h-5 ${isLiked ? 'fill-current' : 'stroke-current'}`} 
+        viewBox="0 0 24 24"
+        fill="none"
+        strokeWidth="2"
+      >
+        <path d="M14 10h3v11h-3v-11zm-5 0h3v11h-3v-11zm2.5-8c2.5 0 4.5 2 4.5 4.5v3.5h-9v-3.5c0-2.5 2-4.5 4.5-4.5z"/>
+      </svg>
+      <span>{likeCount}</span>
+    </button>
+    */
 
 export default LikeButton;
