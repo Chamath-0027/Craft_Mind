@@ -41,7 +41,13 @@ const RegisterPage = () => {
       setIsLoading(false);
       return;
     }
-
+/*    // Validate password strength
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters');
+      setIsLoading(false);
+      return;
+    }
+*/
     // Validate password strength
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters');

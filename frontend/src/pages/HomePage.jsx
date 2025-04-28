@@ -126,5 +126,43 @@ const HomePage = () => {
     </div>
   );
 };
+/*const HomePage = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizResults, setQuizResults] = useState(null);
+  
+  const { currentUser, loading: userLoading } = useUser();
+  
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        setLoading(true);
+        const postsRes = await axios.get('http://localhost:8081/api/posts');
+        setPosts(postsRes.data);
+      } catch (err) {
+        console.error('Error fetching content:', err);
+        setError('Failed to load content. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchContent();
+  }, []);
+  
+  const handlePostCreated = (newPost) => {
+    // Add the new post to the beginning of the list
+    setPosts(prevPosts => [newPost, ...prevPosts]);
+  };
 
+  const handlePostUpdated = (updatedPost) => {
+    // Update the post in the list
+    setPosts(prevPosts => 
+      prevPosts.map(post => 
+        post.id === updatedPost.id ? updatedPost : post
+      )
+    );
+  };*/
 export default HomePage;
