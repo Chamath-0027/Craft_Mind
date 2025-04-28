@@ -437,3 +437,204 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
 };
 
 export default PostCard;
+
+
+/*import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import LikeButton from './LikeButton';
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
+import useWebSocket from '../hooks/useWebSocket';
+import { getUser, getComments } from '../services/api';
+import { useUser } from '../contexts/UserContext';
+import axios from 'axios';
+import PostForm from './PostForm'; // Add this import
+import FollowButton from './FollowButton';
+import PostInsights from './PostInsights';
+
+const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpdate }) => {
+  const { currentUser } = useUser();
+  const [post, setPost] = useState(initialPost);
+  const [authorName, setAuthorName] = useState('');
+  const [showComments, setShowComments] = useState(detailed);
+  const [isEditing, setIsEditing] = useState(false);
+  const isOwner = currentUser?.id === post.userId;
+  const [comments, setComments] = useState(initialPost.comments || []);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [userGroups, setUserGroups] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
+  const navigate = useNavigate();
+  
+  // Use WebSocket for real-time updates
+  const { connected, likeCount: wsLikeCount, comments: wsComments } = useWebSocket(post.id);
+  
+  // Local state for likes and comments
+  const [localLikeCount, setLocalLikeCount] = useState(post.likeCount || 0);
+  
+  // Update like count from WebSocket
+  useEffect(() => {
+    if (connected && wsLikeCount > 0) {
+      setLocalLikeCount(wsLikeCount);
+    }
+  }, [connected, wsLikeCount]);
+  
+  // Fetch author name
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      try {
+        const userData = await getUser(post.userId);
+        setAuthorName(userData.fullName || userData.username);
+      } catch (error) {
+        console.error('Error fetching post author:', error);
+      }
+    };
+    
+    if (post.userId) {
+      fetchAuthor();
+    }
+  }, [post.userId]);
+  
+  // Update local state for comments when websocket sends new data
+  useEffect(() => {
+    if (wsComments && wsComments.length > 0) {
+      const newComment = wsComments[wsComments.length - 1];
+      setComments(prevComments => {
+        const commentExists = prevComments.some(comment => comment.id === newComment.id);
+        if (!commentExists) {
+          return [...prevComments, newComment];
+        }
+        return prevComments;
+      });
+    }
+  }, [wsComments]);
+
+  // Check initial like status and count
+  useEffect(() => {
+    let isSubscribed = true;
+    const checkLikeStatus = async () => {
+      if (!userId || !post.id) return;
+      
+      try {
+        const response = await axios.get(
+          `http://localhost:8081/api/posts/${post.id}/likes`,
+          { 
+            params: { userId },
+            timeout: 5000
+          }
+        );
+        
+        if (isSubscribed && response.data) {
+          setIsLiked(response.data.hasLiked || false);
+          setLocalLikeCount(response.data.likeCount || 0);
+        }
+      } catch (error) {
+        console.error('Error checking like status:', error);
+        if (error.response?.status === 500) {
+          console.log('Like status check failed, using default state');
+        }
+      }
+    };
+
+    checkLikeStatus();
+    
+    return () => {
+      isSubscribed = false;
+    };
+  }, [post.id, userId]);
+
+  // Handle new comment added
+  const handleCommentAdded = (newComment) => {
+    setComments(prevComments => {
+      const commentExists = prevComments.some(comment => comment.id === newComment.id);
+      if (!commentExists) {
+        return [...prevComments, newComment];
+      }
+      return prevComments;
+    });
+    setShowComments(true);
+  };
+  
+  // Toggle comments section and fetch comments if needed
+  const toggleComments = async () => {
+    if (!detailed && !showComments) {
+      try {
+        const response = await getComments(post.id);
+        if (response) {
+          setComments(response);
+        }
+      } catch (error) {
+        if (error.response?.status === 404) {
+          // Post was deleted or unavailable
+          setComments([]);
+          if (onDelete) {
+            onDelete(post.id); // Remove post from list if it's no longer available
+          }
+        } else {
+          console.error('Error fetching comments:', error);
+        }
+      }
+    }
+    setShowComments(prev => !prev);
+  };
+
+  const renderVideo = () => {
+    if (!post.videoUrl) return null;
+
+    return (
+      <div className="w-full mb-4 overflow-hidden rounded-lg">
+        <video
+          src={`http://localhost:8081${post.videoUrl}`}
+          controls
+          className="w-full"
+        />
+      </div>
+    );
+  };
+
+  const handleDelete = async () => {
+    if (!isOwner || !currentUser) return;
+    
+    const confirmDelete = window.confirm('Are you sure you want to delete this post?');
+    if (!confirmDelete) return;
+    
+    try {
+      const response = await axios.delete(`http://localhost:8081/api/posts/${post.id}?userId=${currentUser.id}`);
+      if (onDelete) {
+        onDelete(post.id);
+      } else {
+        alert(response.data.message || 'Post deleted successfully');
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert(error.response?.data?.message || 'Failed to delete post. Please try again.');
+    }
+  };
+
+  const handleUpdate = async (updatedPost) => {
+    try {
+      if (onUpdate) {
+        onUpdate(updatedPost);
+      } else {
+        window.location.reload();
+      }
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error updating post:', error);
+      alert(error.response?.data?.message || 'Failed to update post. Please try again.');
+    }
+  };
+
+  // Record view when post is loaded
+  useEffect(() => {
+    const recordView = async () => {
+      if (userId && post.id) {
+        try {
+          await axios.post(`http://localhost:8081/api/posts/${post.id}/views?viewerId=${userId}`);
+        } catch (error) {
+          console.error('Error recording view:', error);
+        }
+      }
+    };
+
+    recordView(); */
