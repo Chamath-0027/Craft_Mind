@@ -638,3 +638,5 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
     };
 
     recordView(); */
+
+  
