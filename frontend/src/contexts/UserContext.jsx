@@ -157,3 +157,18 @@ export const useUser = () => {
   }
   return context;
 };
+/*  const register = async (userData) => {
+    try {
+      const response = await axios.post('http://localhost:8081/api/auth/register', userData);
+      const user = response.data;
+      setCurrentUser(user);
+      localStorage.setItem('skillshare_user', JSON.stringify(user));
+      return { success: true, user };
+    } catch (error) {
+      console.error('Registration error:', error);
+      return { 
+        success: false, 
+        error: error.response?.data?.error || 'Registration failed'
+      };
+    }
+  };*/ 

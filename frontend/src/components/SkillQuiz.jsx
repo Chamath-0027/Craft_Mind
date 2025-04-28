@@ -32,7 +32,16 @@ const SkillQuiz = ({ onComplete }) => {
       setLoading(false);
     }
   };
-
+  /*  const handleAnswer = (answer) => {
+    // Use the question ID as the key instead of the current question index
+    const questionId = questions[currentQuestion].id;
+    setAnswers({ ...answers, [questionId]: answer });
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      submitQuizs();
+    }
+  };*/ 
   const handleAnswer = (answer) => {
     // Use the question ID as the key instead of the current question index
     const questionId = questions[currentQuestion].id;
