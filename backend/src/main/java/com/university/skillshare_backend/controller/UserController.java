@@ -161,4 +161,11 @@ public class UserController {
         counts.put("following", followRepository.countByFollowerId(userId));
         return ResponseEntity.ok(counts);
     }
+    /*  @GetMapping("/users/{userId}/counts")
+    public ResponseEntity<Map<String, Long>> getUserCounts(@PathVariable String userId) {
+        Map<String, Long> counts = new HashMap<>();
+        counts.put("followers", followRepository.countByFollowedId(userId));
+        counts.put("following", followRepository.countByFollowerId(userId));
+        return ResponseEntity.ok(counts);
+    } */
 }
