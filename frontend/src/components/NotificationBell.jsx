@@ -120,6 +120,15 @@ const NotificationBell = () => {
       setNotifications(notifications.map(n => 
         n.id === notificationId ? { ...n, read: false } : n
       ));
+
+      /* setNotifications(notifications.map(n => 
+        n.id === notificationId ? { ...n, read: false } : n
+      )); */
+
+      /*
+      setNotifications(notifications.map(n => 
+        n.id === notificationId ? { ...n, read: false } : n
+      ));*/
       
       // Update unread count
       setUnreadCount(prev => prev + 1);

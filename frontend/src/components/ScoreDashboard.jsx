@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+/*const ScoreDashboard = ({ userId, showHistory = false }) => {
+  const [assessments, setAssessments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedSkill, setSelectedSkill] = useState('');*/ 
 
 const ScoreDashboard = ({ userId, showHistory = false }) => {
   const [assessments, setAssessments] = useState([]);
@@ -53,7 +58,7 @@ const ScoreDashboard = ({ userId, showHistory = false }) => {
       console.error('Failed to select favorite skill:', err);
     }
   };
-
+//SkillCard//
   const renderSkillCard = (skill, score) => (
     <div className="bg-white p-4 rounded-lg shadow">
       <h4 className="font-semibold text-lg mb-2">{skill}</h4>
