@@ -30,8 +30,16 @@ const Navigation = () => {
                 <Link to="/achievements" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Achievements</Link>
                 <Link to="/profile" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Profile</Link>
                 
+            
+                
+                
+                
                 {/* Add NotificationBell here */}
                 <NotificationBell />
+                
+
+
+              
                 
                 <div className="relative">
                   <button 
@@ -161,3 +169,14 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+/* <div className="relative">
+                  <button 
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="flex items-center space-x-2 focus:outline-none text-facebook-text-primary hover:text-facebook-primary transition duration-300"
+                  >
+                    <span className="font-medium text-black">{currentUser.fullName || currentUser.username}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button> */
