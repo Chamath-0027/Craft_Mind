@@ -188,6 +188,8 @@ const GroupManagement = ({ group, currentUser, onUpdate }) => {
               required
             />
           </div>
+
+          
           
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -289,3 +291,26 @@ const GroupManagement = ({ group, currentUser, onUpdate }) => {
 };
 
 export default GroupManagement;
+
+
+
+
+
+/* return (
+    <div className="bg-white rounded-lg shadow p-4 mt-4">
+      <h2 className="text-xl font-bold mb-4 text-black">Group Management</h2>
+      
+      {isEditing ? (
+        <form onSubmit={handleEditSubmit} className="mb-6">
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Group Name
+            </label>
+            <input
+              type="text"
+              value={editForm.name}
+              onChange={(e) => setEditForm({...editForm, name: e.target.value})}
+              className="w-full p-2 border border-gray-300 rounded text-black"
+              required
+            />
+          </div> */
