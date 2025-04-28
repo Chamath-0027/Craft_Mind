@@ -39,7 +39,12 @@ const AchievementsPage = () => {
   const handleAchievementDeleted = (achievementId) => {
     setAchievements(prev => prev.filter(a => a.id !== achievementId));
   };
-
+ /* const handleAchievementUpdated = (updatedAchievement) => {
+    setAchievements(prev => 
+      prev.map(a => a.id === updatedAchievement.id ? updatedAchievement : a)
+    );
+  };*/
+  
   const handleAchievementUpdated = (updatedAchievement) => {
     setAchievements(prev => 
       prev.map(a => a.id === updatedAchievement.id ? updatedAchievement : a)
