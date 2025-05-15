@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.lang.NonNull;
 
 import com.university.skillshare_backend.exception.ResourceNotFoundException;
 import com.university.skillshare_backend.exception.UnauthorizedException;
@@ -149,7 +150,7 @@ public class PostController implements WebMvcConfigurer {
     private String uploadDir;
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/api/uploads/**")
                 .addResourceLocations("file:" + uploadDir + "/");
     }

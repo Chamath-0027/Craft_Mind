@@ -9,7 +9,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.util.Assert;
 import com.university.skillshare_backend.model.PostInsights;
 import com.university.skillshare_backend.repository.PostInsightsRepository;
-import com.university.skillshare_backend.exception.ResourceNotFoundException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import com.university.skillshare_backend.repository.LikeRepository;
@@ -154,10 +153,5 @@ public class PostInsightsService {
             logger.error("Error broadcasting insights for post {}: {}", postId, e.getMessage());
             // Don't throw exception here to prevent transaction rollback
         }
-    }
-
-    private PostInsights createNewInsights(String postId) {
-        PostInsights insights = new PostInsights(postId);
-        return insightsRepository.save(insights);
     }
 }
