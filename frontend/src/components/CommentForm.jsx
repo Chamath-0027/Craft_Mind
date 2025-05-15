@@ -7,7 +7,6 @@ const CommentForm = ({ postId, userId, onCommentAdded, commentId, initialText, i
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
- 
   // Reset form when initialText changes (for editing)
   useEffect(() => {
     setText(initialText || '');

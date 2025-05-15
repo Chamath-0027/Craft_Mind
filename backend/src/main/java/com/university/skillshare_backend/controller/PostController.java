@@ -123,7 +123,6 @@ public class PostController implements WebMvcConfigurer {
             String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
             String uploadDir = "uploads/";
             
-            // Create uploads directory if it doesn't exist
             File dir = new File(uploadDir);
             if (!dir.exists()) {
                 dir.mkdirs();
