@@ -77,14 +77,7 @@ const GroupManagement = ({ group, currentUser, onUpdate }) => {
     }
   };
 
-  /*
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-   
-    
   
-  
-  */
   const handleDeleteGroup = async () => {
     if (!confirm('Are you sure you want to delete this group? This action cannot be undone.')) {
       return;
