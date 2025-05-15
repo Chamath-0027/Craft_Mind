@@ -54,45 +54,7 @@ const InsightCard = ({ label, value }) => (
     <p className="text-xl font-bold text-gray-900">{value}</p>
   </div>
 );
-/*const InsightCard = ({ label, value }) => (
-  <div className="bg-white p-3 rounded-md shadow-sm">
-    <p className="text-sm text-gray-600">{label}</p>
-    <p className="text-xl font-bold text-gray-900">{value}</p>
-  </div>
-);
-*/
+
 
 export default PostInsights;
 
-
-/* 
-import { useState, useEffect } from 'react';
-import useWebSocket from '../hooks/useWebSocket';
-import axios from 'axios';
-
-const PostInsights = ({ postId }) => {
-  const [insights, setInsights] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { connected, insights: wsInsights } = useWebSocket(postId);
-
-  useEffect(() => {
-    const fetchInsights = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:8081/api/posts/${postId}/insights`);
-        setInsights(response.data);
-      } catch (error) {
-        console.error('Error fetching insights:', error);
-        setError('Failed to load insights');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInsights();
-  }, [postId]);
-
-  useEffect(() => {
-    if (wsInsights) {
-*/
