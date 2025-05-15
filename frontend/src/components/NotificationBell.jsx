@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useUser } from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import SockJS from 'sockjs-client';
-import Stomp from 'stompjs'; // Changed from '@stomp/stompjs'
+import Stomp from 'stompjs'; 
 
 const NotificationBell = () => {
   const [notifications, setNotifications] = useState([]);
