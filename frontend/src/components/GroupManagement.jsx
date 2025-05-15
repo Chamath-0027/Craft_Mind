@@ -80,19 +80,7 @@ const GroupManagement = ({ group, currentUser, onUpdate }) => {
   /*
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const token = localStorage.getItem('skillshare_token');
-      const response = await axios.put(
-        `http://localhost:8081/api/groups/${group.id}?userId=${currentUser.id}`,
-        editForm,
-        { headers: { 'Authorization': `Bearer ${token}` } }
-      );
-      
-      setIsEditing(false);
-      if (onUpdate) {
-        onUpdate(response.data);
-      }
-      alert('Group updated successfully!');
+   
     
   
   
