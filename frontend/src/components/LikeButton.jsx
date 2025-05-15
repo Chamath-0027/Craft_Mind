@@ -79,9 +79,4 @@ const LikeButton = ({ postId, initialLikeCount = 0, userId, onLikeUpdate, compac
 };
 
 
-
-
-
-
-
 export default LikeButton;
