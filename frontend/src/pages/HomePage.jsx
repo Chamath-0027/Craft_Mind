@@ -70,7 +70,7 @@ const HomePage = () => {
   return (
     <div className="max-w-2xl mx-auto mt-8 p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-facebook-text-primary">Skillshare Feed</h1>
+        <h1 className="text-2xl font-bold text-[#2d79dc]">Skillshare Feed</h1>
         {currentUser && !showQuiz && !quizResults && (
           <button
             onClick={() => setShowQuiz(true)}
@@ -103,7 +103,7 @@ const HomePage = () => {
         </div>
       )}
       
-      <h2 className="text-xl font-medium mb-4 text-white">Recent Posts</h2>
+      <h2 className="text-xl font-medium mb-4 text-[#2d79dc]">Recent Posts</h2>
       
       {posts.length === 0 ? (
         <div className="bg-white p-4 rounded-lg shadow-md">
