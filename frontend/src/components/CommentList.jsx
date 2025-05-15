@@ -114,28 +114,5 @@ const CommentList = ({ postId, userId, initialComments = [] }) => {
     </div>
   );
 };
-/*return (
-    <div className="mt-4 space-y-3">
-      <h3 className="font-medium text-gray-700">
-        {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
-      </h3>
-      
-      {comments.length === 0 ? (
-        <p className="text-sm text-gray-500">No comments yet. Be the first to comment!</p>
-      ) : (
-        comments.map(comment => (
-          <CommentItem
-            key={comment.id}
-            comment={comment}
-            userId={userId}
-            onDelete={handleDelete}
-            onUpdate={handleUpdate}
-          />
-        ))
-      )}
-    </div>
-  );
-};
-*/
 
 export default CommentList;
