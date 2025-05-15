@@ -14,11 +14,9 @@ import java.util.Map;
 @Controller
 public class WebSocketController {
 
-    private final WebSocketService webSocketService;
-
     @Autowired
     public WebSocketController(WebSocketService webSocketService) {
-        this.webSocketService = webSocketService;
+        // Removed assignment to unused field
     }
 
     /**
@@ -33,7 +31,10 @@ public class WebSocketController {
     public Map<String, Object> join(@Payload Map<String, Object> message, 
                                    SimpMessageHeaderAccessor headerAccessor) {
         // Add username to WebSocket session
-        headerAccessor.getSessionAttributes().put("username", message.get("sender"));
+        Map<String, Object> sessionAttributes = headerAccessor.getSessionAttributes();
+        if (sessionAttributes != null) {
+            sessionAttributes.put("username", message.get("sender"));
+        }
         return message;
     }
 

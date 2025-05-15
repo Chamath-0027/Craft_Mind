@@ -158,7 +158,7 @@ const Groups = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Groups</h1>
+        <h1 className="text-2xl font-bold text-[#2d79dc]">Groups</h1>
         <button
           onClick={() => setShowCreateForm(true)}
           className="bg-facebook-primary text-white px-4 py-2 rounded-md hover:bg-facebook-hover"
@@ -178,9 +178,9 @@ const Groups = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {groups.map(group => (
-            <div key={group.id} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+            <div key={group.id} className="border rounded-lg p-4 hover:shadow-lg transition-shadow bg-white">
               <Link to={`/groups/${group.id}`}>
-                <h3 className="text-xl font-semibold mb-2">{group.name}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-black">{group.name}</h3>
               </Link>
               <p className="text-gray-600 mb-4">{group.description}</p>
               <div className="flex justify-between items-center">
@@ -190,11 +190,11 @@ const Groups = () => {
                 
                 {/* Check if user is a member or owner of this group */}
                 {group.ownerId === currentUser.id ? (
-                  <span className="px-4 py-2 bg-green-100 text-green-800 rounded">Owner</span>
+                  <span className="px-4 py-2 bg-[#5dff95ab] text-green-800 rounded">Owner</span>
                 ) : userGroups.some(g => g.id === group.id) ? (
                   <button
                     onClick={() => handleLeaveGroup(group.id)}
-                    className="px-4 py-2 border border-gray-300 rounded text-gray-600 hover:bg-gray-100"
+                    className="px-4 py-2 border border-gray-300 rounded text-red-500 hover:bg-[#ff000040]"
                   >
                     Leave
                   </button>

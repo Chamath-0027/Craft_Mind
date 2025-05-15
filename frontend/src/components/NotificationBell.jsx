@@ -323,7 +323,7 @@ const NotificationBell = () => {
                 {notifications.map(notification => (
                   <li 
                     key={notification.id} 
-                    className={`px-4 py-3 border-b border-gray-100 hover:bg-gray-50 ${!notification.read ? 'bg-indigo-50' : ''}`}
+                    className={`px-4 m-[2px] py-3 border-b border-gray-100 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 ${!notification.read ? 'bg-indigo-50' : ''}`}
                   >
                     <div className="flex items-start space-x-3">
                       {getNotificationIcon(notification.type)}

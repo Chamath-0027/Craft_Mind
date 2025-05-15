@@ -64,7 +64,7 @@ const SkillQuiz = ({ onComplete }) => {
 
   if (loading) {
     return (
-      <div className="max-w-2xl mx-auto p-6 bg-facebook-card rounded-lg shadow-md">
+      <div className="max-w-2xl mx-auto p-6 bg-white/30 backdrop-blur-md rounded-lg shadow-lg border border-white/20">
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-4 border-facebook-primary border-t-transparent"></div>
           <span className="ml-2 text-black">Loading quiz questions...</span>
@@ -75,7 +75,7 @@ const SkillQuiz = ({ onComplete }) => {
 
   if (error || !questions.length) {
     return (
-      <div className="max-w-2xl mx-auto p-6 bg-facebook-card rounded-lg shadow-md">
+      <div className="max-w-2xl mx-auto p-6 bg-white/30 backdrop-blur-md rounded-lg shadow-lg border border-white/20">
         <div className="text-center">
           <p className="text-red-600 mb-4">{error || 'No questions available'}</p>
           <button 
@@ -90,7 +90,7 @@ const SkillQuiz = ({ onComplete }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-facebook-card rounded-lg shadow-md">
+    <div className="max-w-2xl mx-auto p-6 bg-[#ffffff] backdrop-blur-md rounded-lg shadow-lg border border-white/20">
       <div className="mb-8">
         <div className="text-sm text-black mb-2">
           Question {currentQuestion + 1} of {questions.length}

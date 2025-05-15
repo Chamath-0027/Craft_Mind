@@ -31,7 +31,7 @@ public class FollowService {
         // Check if users exist
         User follower = userRepository.findById(followerId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", followerId));
-        User followed = userRepository.findById(followedId)
+        userRepository.findById(followedId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", followedId));
 
         // Check if already following

@@ -14,32 +14,26 @@ const Navigation = () => {
   };
   
   return (
-    <nav className="bg-facebook-card border-b border-facebook-divider shadow-md">
+    <nav className="bg-[#6390BD] border-b border-facebook-divider shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <Link to="/" className="font-bold text-xl text-facebook-primary">CraftMind</Link>
+            <Link to="/" className="font-bold text-xl text-white">CraftMind</Link>
           </div>
           
           {currentUser ? (
             <div className="flex items-center">
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
-                <Link to="/" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Home</Link>
-                <Link to="/groups" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Groups</Link>
-                <Link to="/achievements" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Achievements</Link>
-                <Link to="/profile" className="text-facebook-text-primary hover:text-facebook-primary transition duration-300">Profile</Link>
-                
-            
-                
-                
+                <Link to="/" className="text-facebook-text-primary hover:text-[#3d4248] transition duration-300">Home</Link>
+                <Link to="/groups" className="text-facebook-text-primary hover:text-[#3d4248] transition duration-300">Groups</Link>
+                <Link to="/achievements" className="text-facebook-text-primary hover:text-[#3d4248] transition duration-300">Achievements</Link>
+                <Link to="/profile" className="text-facebook-text-primary hover:text-[#3d4248] transition duration-300">Profile</Link>
+                   
                 
                 {/* Add NotificationBell here */}
                 <NotificationBell />
-                
 
-
-              
                 
                 <div className="relative">
                   <button 

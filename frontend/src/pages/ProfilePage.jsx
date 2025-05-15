@@ -428,74 +428,89 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="bg-gray-100 shadow-lg rounded-lg overflow-hidden mb-8 text-gray-800 border border-gray-200">
-        <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-8 text-white relative">
-          <div className="flex items-center space-x-4">
-            <div className="w-20 h-20 bg-facebook-card rounded-full flex items-center justify-center text-facebook-primary text-2xl font-bold border-4 border-white">
-              {currentUser?.fullName?.[0]?.toUpperCase() || currentUser?.username?.[0]?.toUpperCase()}
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold">{currentUser?.fullName || currentUser?.username}</h1>
-              <p className="text-white/80">@{currentUser?.username}</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50">
+      <div className="container mx-auto max-w-4xl px-4 py-8">
+        {/* Profile Card */}
+        <div className="bg-white shadow-2xl rounded-2xl overflow-hidden mb-8 transform transition-all duration-300 hover:shadow-3xl border border-blue-100">
+          {/* Profile Header */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 opacity-95"></div>
+            <div className="relative px-8 py-12">
+              <div className="flex items-center space-x-6">
+                <div className="relative">
+                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-3xl font-bold text-blue-600 border-4 border-white shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    {currentUser?.fullName?.[0]?.toUpperCase() || currentUser?.username?.[0]?.toUpperCase()}
+                  </div>
+                  {currentUser?.isVerified && (
+                    <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-1">
+                      <span className="material-icons text-white text-sm">verified</span>
+                    </div>
+                  )}
+                </div>
+                <div className="text-white">
+                  <h1 className="text-4xl font-bold mb-2">{currentUser?.fullName || currentUser?.username}</h1>
+                  <p className="text-white/90 text-lg">@{currentUser?.username}</p>
+                  {currentUser?.role === 'INSTRUCTOR' && (
+                    <span className="inline-block mt-2 px-3 py-1 bg-white/20 rounded-full text-sm backdrop-blur-sm">
+                      {currentUser?.role}
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="p-6">
-          {currentUser?.role === 'INSTRUCTOR' && currentUser?.isVerified && (
-            <div className="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-              Verified Instructor
-            </div>
-          )}
-          {message.text && (
-            <div className={`mb-4 p-3 rounded ${
-              message.type === 'error' 
-                ? 'bg-red-100 text-red-700 border border-red-400' 
-                : 'bg-green-100 text-green-700 border border-green-400'
-            }`}>
-              {message.text}
-            </div>
-          )}
-          
-          <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="username">
-                  Username
-                </label>
-                <input
-                  className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-600"
-                  id="username"
-                  name="username"
-                  type="text"
-                  value={formData.username}
-                  onChange={handleChange}
-                  disabled={!isEditing || isLoading}
-                />
+
+          {/* Profile Content */}
+          <div className="p-8">
+            {message.text && (
+              <div className={`mb-6 p-4 rounded-xl ${
+                message.type === 'error' 
+                  ? 'bg-red-50 text-red-700 border border-red-200' 
+                  : 'bg-blue-50 text-blue-700 border border-blue-200'
+              }`}>
+                {message.text}
               </div>
-              
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="email">
-                  Email Address
-                </label>
-                <input
-                  className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-600"
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  disabled={!isEditing || isLoading}
-                />
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-blue-900" htmlFor="username">
+                    Username
+                  </label>
+                  <input
+                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 disabled:bg-blue-50 disabled:text-blue-500"
+                    id="username"
+                    name="username"
+                    type="text"
+                    value={formData.username}
+                    onChange={handleChange}
+                    disabled={!isEditing || isLoading}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-blue-900" htmlFor="email">
+                    Email Address
+                  </label>
+                  <input
+                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 disabled:bg-blue-50 disabled:text-blue-500"
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={!isEditing || isLoading}
+                  />
+                </div>
               </div>
-              
-              <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="fullName">
+
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-blue-900" htmlFor="fullName">
                   Full Name
                 </label>
                 <input
-                  className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-600"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 disabled:bg-blue-50 disabled:text-blue-500"
                   id="fullName"
                   name="fullName"
                   type="text"
@@ -504,170 +519,177 @@ const ProfilePage = () => {
                   disabled={!isEditing || isLoading}
                 />
               </div>
-            </div>
-            
-            <div className="mb-4">
-              <label className="block text-gray-800 text-sm font-bold mb-2">
-                Role
-              </label>
-              <input
-                className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500 disabled:bg-gray-100"
-                value={currentUser?.role}
-                disabled
-              />
-            </div>
 
-            <div className="mb-4">
-              <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="bio">
-                Bio
-              </label>
-              <textarea
-                className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500"
-                id="bio"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-                disabled={!isEditing}
-                rows="3"
-              />
-            </div>
-
-            {currentUser?.role === 'INSTRUCTOR' && (
-              <div className="mb-4">
-                <label className="block text-gray-800 text-sm font-bold mb-2">
-                  Specializations
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-blue-900">
+                  Role
                 </label>
-                <input
-                  type="text"
-                  className="appearance-none border-2 border-gray-300 bg-white rounded w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:border-indigo-500"
-                  value={formData.specializations.join(', ')}
-                  onChange={(e) => handleSpecializationsChange(e.target.value)}
+                <div className="px-4 py-3 rounded-lg bg-blue-50 text-blue-600 border-2 border-blue-100">
+                  {currentUser?.role}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-blue-900" htmlFor="bio">
+                  Bio
+                </label>
+                <textarea
+                  className="w-full px-4 py-3 rounded-lg border-2 border-blue-100 bg-blue-50/50 text-blue-900 placeholder-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:bg-white transition-all duration-200 resize-none disabled:bg-blue-50/30 disabled:text-blue-600/70 disabled:cursor-not-allowed"
+                  id="bio"
+                  name="bio"
+                  value={formData.bio}
+                  onChange={handleChange}
                   disabled={!isEditing}
+                  rows="3"
+                  placeholder="Share something about yourself..."
                 />
               </div>
-            )}
-            
-            <div className="mt-8 flex justify-end">
-              {isEditing ? (
-                <>
+
+              {currentUser?.role === 'INSTRUCTOR' && (
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-blue-900">
+                    Specializations
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                    value={formData.specializations.join(', ')}
+                    onChange={(e) => handleSpecializationsChange(e.target.value)}
+                    disabled={!isEditing}
+                  />
+                </div>
+              )}
+
+              <div className="flex justify-end space-x-4 pt-4">
+                {isEditing ? (
+                  <>
+                    <button
+                      type="button"
+                      className="px-6 py-3 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-all duration-200 font-medium"
+                      onClick={() => {
+                        setIsEditing(false);
+                        setFormData({
+                          fullName: currentUser.fullName || '',
+                          email: currentUser.email || '',
+                          username: currentUser.username || '',
+                          bio: currentUser.bio || '',
+                          specializations: currentUser.specializations || [],
+                          role: currentUser.role || 'LEARNER'
+                        });
+                      }}
+                      disabled={isLoading}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className={`px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 font-medium ${
+                        isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                      }`}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? 'Saving...' : 'Save Changes'}
+                    </button>
+                  </>
+                ) : (
                   <button
                     type="button"
-                    className="mr-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition duration-300"
-                    onClick={() => {
-                      setIsEditing(false);
-                      // Reset form to original values
-                      setFormData({
-                        fullName: currentUser.fullName || '',
-                        email: currentUser.email || '',
-                        username: currentUser.username || '',
-                        bio: currentUser.bio || '',
-                        specializations: currentUser.specializations || [],
-                        role: currentUser.role || 'LEARNER'  // Reset role from currentUser
-                      });
-                    }}
-                    disabled={isLoading}
+                    className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200 font-medium"
+                    onClick={() => setIsEditing(true)}
                   >
-                    Cancel
+                    Edit Profile
                   </button>
-                  <button
-                    type="submit"
-                    className={`px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 ${
-                      isLoading ? 'opacity-70 cursor-not-allowed' : ''
-                    }`}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? 'Saving...' : 'Save Changes'}
-                  </button>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300"
-                  onClick={() => setIsEditing(true)}
-                >
-                  Edit Profile
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-        <div className="flex justify-center space-x-8 py-4 border-t bg-gray-50">
-          <button
-            onClick={() => setShowFollowers(true)}
-            className="text-green-700 hover:text-green-800 flex flex-col items-center"
-          >
-            <span className="text-2xl font-bold">{followerCount}</span>
-            <span className="text-sm">Followers</span>
-          </button>
-          <button
-            onClick={() => setShowFollowing(true)}
-            className="text-green-700 hover:text-green-800 flex flex-col items-center"
-          >
-            <span className="text-2xl font-bold">{followingCount}</span>
-            <span className="text-sm">Following</span>
-          </button>
-        </div>
-      </div>
-      
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-8">
-        {renderTabs()}
-        <div className="p-6">
-          {renderContent()}
-        </div>
-      </div>
+                )}
+              </div>
+            </form>
+          </div>
 
-      {/* Followers Modal */}
-      {showFollowers && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-black rounded-lg w-full max-w-md">
-            <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-lg font-medium">Followers</h3>
-              <button 
-                onClick={() => setShowFollowers(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-4 max-h-96 overflow-y-auto">
-              {followers.length > 0 ? (
-                followers.map(user => (
-                  <div key={user.id} className="flex items-center justify-between py-2 border-b">
-                    <div>
-                      <p className="font-medium">{user.username}</p>
-                      <p className="text-sm text-gray-500">{user.fullName}</p>
-                    </div>
-                    <FollowButton userId={user.id} followerId={currentUser.id} onRefreshCounts={refreshFollowCounts} />
-                  </div>
-                ))
-              ) : (
-                <p className="text-center text-gray-500 py-4">No followers yet</p>
-              )}
-            </div>
+          {/* Stats Bar */}
+          <div className="flex justify-center space-x-16 py-8 border-t border-blue-100">
+            <button
+              onClick={() => setShowFollowers(true)}
+              className="group flex flex-col items-center transition-all duration-300 hover:scale-105 focus:outline-none"
+            >
+              <div className="relative">
+                <span className="text-4xl font-bold text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                  {followerCount}
+                </span>
+              </div>
+              <span className="mt-2 text-sm font-medium text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                Followers
+              </span>
+            </button>
+            <div className="w-px h-12 bg-blue-100 self-center"></div>
+            <button
+              onClick={() => setShowFollowing(true)}
+              className="group flex flex-col items-center transition-all duration-300 hover:scale-105 focus:outline-none"
+            >
+              <div className="relative">
+                <span className="text-4xl font-bold text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                  {followingCount}
+                </span>
+              </div>
+              <span className="mt-2 text-sm font-medium text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                Following
+              </span>
+            </button>
           </div>
         </div>
-      )}
 
-      {/* Following Modal */}
-      {showFollowing && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-black rounded-lg w-full max-w-md">
-            <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="text-lg font-medium">Following</h3>
-              <button 
-                onClick={() => setShowFollowing(false)}
-                className="text-gray-500 hover:text-gray-700"
+        {/* Content Tabs */}
+        <div className="bg-white shadow-2xl rounded-2xl overflow-hidden border border-blue-100">
+          <div className="flex border-b border-blue-100">
+            {['posts', 'achievements', 'skills'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-8 py-4 text-sm font-medium transition-all duration-200 focus:outline-none ${
+                  activeTab === tab 
+                    ? 'border-b-2 border-blue-600 text-blue-600' 
+                    : 'text-blue-500 hover:text-blue-700'
+                }`}
               >
-                ×
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          <div className="p-8">
+            {renderContent()}
+          </div>
+        </div>
+      </div>
+
+      {/* Modals */}
+      {(showFollowers || showFollowing) && (
+        <div className="fixed inset-0 bg-blue-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl w-full max-w-md shadow-2xl transform transition-all duration-300 border border-blue-100">
+            <div className="p-6 border-b border-blue-100 flex justify-between items-center">
+              <h3 className="text-xl font-semibold text-blue-900">
+                {showFollowers ? 'Followers' : 'Following'}
+              </h3>
+              <button 
+                onClick={() => {
+                  setShowFollowers(false);
+                  setShowFollowing(false);
+                }}
+                className="text-blue-400 hover:text-blue-600 transition-colors duration-200 focus:outline-none"
+              >
+                <span className="material-icons">close</span>
               </button>
             </div>
-            <div className="p-4 max-h-96 overflow-y-auto">
-              {following.length > 0 ? (
-                following.map(user => (
-                  <div key={user.id} className="flex items-center justify-between py-2 border-b">
-                    <div>
-                      <p className="font-medium">{user.username}</p>
-                      <p className="text-sm text-gray-500">{user.fullName}</p>
+            <div className="p-6 max-h-96 overflow-y-auto">
+              {(showFollowers ? followers : following).length > 0 ? (
+                (showFollowers ? followers : following).map(user => (
+                  <div key={user.id} className="flex items-center justify-between py-4 border-b border-blue-100 last:border-0">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-blue-600 font-semibold">
+                        {user.fullName?.[0]?.toUpperCase() || user.username?.[0]?.toUpperCase()}
+                      </div>
+                      <div>
+                        <p className="font-medium text-blue-900">{user.username}</p>
+                        <p className="text-sm text-blue-600">{user.fullName}</p>
+                      </div>
                     </div>
                     <FollowButton 
                       userId={user.id} 
@@ -677,7 +699,9 @@ const ProfilePage = () => {
                   </div>
                 ))
               ) : (
-                <p className="text-center text-gray-500 py-4">Not following anyone yet</p>
+                <p className="text-center text-blue-600 py-4">
+                  {showFollowers ? 'No followers yet' : 'Not following anyone yet'}
+                </p>
               )}
             </div>
           </div>
@@ -688,12 +712,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-/*</button>
-<button
-  onClick={() => setActiveTab('achievements')}
-  className={`px-6 py-3 ${
-    activeTab === 'achievements' 
-      ? 'border-b-2 border-blue-500 text-blue-500' 
-      : 'text-gray-500'
-  }`}
->*/

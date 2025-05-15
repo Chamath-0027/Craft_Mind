@@ -66,7 +66,7 @@ const AchievementsPage = () => {
   return (
     <div className="max-w-2xl mx-auto mt-8 p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">Achievements</h1>
+        <h1 className="text-2xl font-bold text-[#2d79dc]">Achievements</h1>
       </div>
 
       {currentUser && <AchievementForm onAchievementCreated={handleAchievementCreated} />}

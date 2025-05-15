@@ -12,10 +12,8 @@ import com.university.skillshare_backend.repository.UserRepository;
 import com.university.skillshare_backend.exception.ResourceNotFoundException;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 import com.university.skillshare_backend.model.GroupPost;
 import com.university.skillshare_backend.repository.GroupPostRepository;
 import com.university.skillshare_backend.repository.PostRepository;
@@ -104,7 +102,7 @@ public class GroupService {
 
     public GroupPost sharePost(String groupId, String postId, String userId) {
         Group group = getGroupById(groupId);
-        Post post = postRepository.findById(postId)
+        postRepository.findById(postId)
             .orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
 
         // Allow both group owners and members to share posts

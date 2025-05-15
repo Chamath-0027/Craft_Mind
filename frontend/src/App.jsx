@@ -74,7 +74,7 @@ function App() {
   return (
     <UserProvider>
       <Router>
-        <div className="min-h-screen bg-facebook-dark">
+        <div className="min-h-screen bg-[#aac4ef4f] ">
           <Navigation />
           
           <main className="text-facebook-text-primary">
