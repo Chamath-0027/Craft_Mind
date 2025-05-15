@@ -56,5 +56,7 @@ const InsightCard = ({ label, value }) => (
 );
 
 
+
 export default PostInsights;
+
 

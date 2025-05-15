@@ -115,3 +115,38 @@ const MentionInput = ({ value, onChange, placeholder, disabled }) => {
 };
 
 export default MentionInput;
+
+/*return (
+    <div className="relative">
+      <textarea
+        ref={inputRef}
+        value={value}
+        onChange={handleChange}
+        placeholder={placeholder}
+        disabled={disabled}
+        className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        rows={3}
+      />
+      
+      {showSuggestions && suggestions.length > 0 && (
+        <div
+          ref={suggestionsRef}
+          className="absolute z-50 w-full max-h-48 overflow-y-auto bg-white border border-gray-200 rounded-md shadow-lg mt-1"
+        >
+          {suggestions.map(user => (
+            <div
+              key={user.id}
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              onClick={() => insertMention(user.username)}
+            >
+              <div className="font-medium">{user.username}</div>
+              {user.fullName && (
+                <div className="text-sm text-gray-500">{user.fullName}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};*/
