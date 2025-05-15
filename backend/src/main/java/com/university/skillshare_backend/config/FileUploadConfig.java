@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.beans.factory.annotation.Value;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.springframework.lang.NonNull;
 
 @Configuration
 public class FileUploadConfig implements WebMvcConfigurer {
@@ -18,7 +19,7 @@ public class FileUploadConfig implements WebMvcConfigurer {
     private String uploadDir;
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(@NonNull ResourceHandlerRegistry registry) {
         try {
             Path uploadPath = Paths.get(uploadDir).toAbsolutePath().normalize();
             String location = uploadPath.toUri().toURL().toString();
