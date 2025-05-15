@@ -8,7 +8,6 @@ import com.university.skillshare_backend.model.Notification;
 import com.university.skillshare_backend.model.Notification.NotificationType;
 import com.university.skillshare_backend.repository.NotificationRepository;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Map;
