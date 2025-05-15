@@ -93,10 +93,7 @@ const GroupManagement = ({ group, currentUser, onUpdate }) => {
         onUpdate(response.data);
       }
       alert('Group updated successfully!');
-    } catch (error) {
-      console.error('Error updating group:', error);
-      alert(error.response?.data?.message || 'Failed to update group');
-    }
+    
   
   
   */
@@ -296,21 +293,4 @@ export default GroupManagement;
 
 
 
-/* return (
-    <div className="bg-white rounded-lg shadow p-4 mt-4">
-      <h2 className="text-xl font-bold mb-4 text-black">Group Management</h2>
-      
-      {isEditing ? (
-        <form onSubmit={handleEditSubmit} className="mb-6">
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Group Name
-            </label>
-            <input
-              type="text"
-              value={editForm.name}
-              onChange={(e) => setEditForm({...editForm, name: e.target.value})}
-              className="w-full p-2 border border-gray-300 rounded text-black"
-              required
-            />
-          </div>dfbsb */
+
