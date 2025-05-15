@@ -1,13 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { searchUsers } from '../services/api';
 
-/*const MentionInput = ({ value, onChange, placeholder, disabled }) => {
-  const [mentionSearch, setMentionSearch] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState(0);
-  const inputRef = useRef(null);
-  const suggestionsRef = useRef(null);*/
+
   
 const MentionInput = ({ value, onChange, placeholder, disabled }) => {
   const [mentionSearch, setMentionSearch] = useState('');
