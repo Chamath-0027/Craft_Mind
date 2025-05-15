@@ -128,6 +128,30 @@ public class GroupController {
                    .body(Map.of("message", "Failed to update group: " + e.getMessage()));
         }
     }
+
+    /*@PutMapping("/{groupId}")
+    public ResponseEntity<?> updateGroup(
+            @RequestParam String userId) {
+        try {
+            Group group = groupService.updateGroup(groupId, updatedGroup, userId);
+            return ResponseEntity.ok(group);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                   .body(Map.of("message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                   .body(Map.of("message", "Failed to update group: " + e.getMessage()));
+        }
+    } */
+
+
+
+
+
+
+
+
+    
     
     @DeleteMapping("/{groupId}")
     public ResponseEntity<?> deleteGroup(
