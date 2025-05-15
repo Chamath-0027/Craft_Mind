@@ -114,23 +114,13 @@ const PostInsights = ({ postId }) => {
   const [error, setError] = useState(null);
   const { connected, insights: wsInsights } = useWebSocket(postId);
 
-  useEffect(() => {
-    const fetchInsights = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:8081/api/posts/${postId}/insights`);
-        setInsights(response.data);
-      } catch (error) {
-        console.error('Error fetching insights:', error);
-        setError('Failed to load insights');
-      } finally {
-        setLoading(false);
-      }
-    };
+const InsightCard = ({ label, value }) => (
+  <div className="bg-white p-3 rounded-md shadow-sm">
+    <p className="text-sm text-gray-600">{label}</p>
+    <p className="text-xl font-bold text-gray-900">{value}</p>
+  </div>
+);
 
-    fetchInsights();
-  }, [postId]);
 
-  useEffect(() => {
-    if (wsInsights) {
-*/
+export default PostInsights;
+
