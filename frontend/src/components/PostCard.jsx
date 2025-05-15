@@ -310,7 +310,7 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
   );
   
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-4 text-gray-800 border border-facebook-divider max-w-2xl mx-auto">
+    <div className="bg-white rounded-xl shadow-lg p-6 mb-6 text-gray-800 border border-gray-100 max-w-2xl mx-auto hover:shadow-xl transition-shadow duration-300">
       {isEditing ? (
         <PostForm
           initialData={post}
@@ -320,31 +320,31 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
         />
       ) : (
         <>
-          <div className="flex justify-between mb-3">
-            <div className="flex items-center">
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex items-center space-x-3">
               <div>
-                <h3 className="font-medium text-black">{post.title}</h3>
-                <p className="text-sm text-gray-500 ml-2">
-                  Posted by {authorName || 'Anonymous'} • 
+                <h3 className="font-semibold text-lg text-gray-900">{post.title}</h3>
+                <p className="text-sm text-gray-500">
+                  Posted by <span className="font-medium text-gray-700">{authorName || 'Anonymous'}</span> • 
                   {post.createdAt && new Date(post.createdAt).toLocaleDateString()}
                 </p>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
               {userId && userId !== post.userId && (
                 <FollowButton userId={post.userId} followerId={userId} />
               )}
               {isOwner && currentUser && (
-                <div className="flex space-x-2">
+                <div className="flex space-x-3">
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="text-facebook-primary hover:text-facebook-hover"
+                    className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
                   >
                     Edit
                   </button>
                   <button
                     onClick={handleDelete}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 transition-colors duration-200"
                   >
                     Delete
                   </button>
@@ -355,57 +355,58 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
           
           {/* Post insights for owner */}
           {isOwner && (
-            <div className="mb-4">
+            <div className="mb-6 bg-gray-50 rounded-lg p-6 border border-gray-100">
               <PostInsights postId={post.id} />
             </div>
           )}
 
           {/* Post content */}
-          <div className="mb-4">
+          <div className="mb-6">
             {post.imageUrl && (
               <img 
                 src={`http://localhost:8081${post.imageUrl}`} 
                 alt="Post content"
-                className="w-full h-auto rounded-lg mb-4 max-h-96 object-cover"
+                className="w-full h-auto rounded-lg mb-4 max-h-96 object-cover shadow-md"
               />
             )}
             {renderVideo()}
-            <p className="text-black">{post.content}</p>
+            <p className="text-gray-700 leading-relaxed">{post.content}</p>
           </div>
           
           {/* Post actions */}
-          <div className="flex justify-between items-center border-t border-b border-gray-200 py-2 my-2">
-            {/* Like button with heart icon */}
+          <div className="flex justify-between items-center border-t border-b border-gray-200 py-3 my-4">
             <button
               onClick={handleLikeToggle}
-              className="inline-flex items-center gap-2 px-3 py-1 text-black hover:text-facebook-primary transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-lg hover:bg-blue-50"
             >
-              <span className={`material-icons text-base ${isLiked ? 'text-red-500' : 'text-gray-400'} hover:text-red-600`}>
+              <span className={`material-icons text-xl ${isLiked ? 'text-red-500' : 'text-gray-400'} hover:text-red-600`}>
                 {isLiked ? 'favorite' : 'favorite_border'}
               </span>
-              {localLikeCount} {localLikeCount === 1 ? 'Like' : 'Likes'}
+              <span className="font-medium">{localLikeCount} {localLikeCount === 1 ? 'Like' : 'Likes'}</span>
             </button>
+
             <button
               onClick={() => setShowShareModal(true)}
-              className="inline-flex items-center gap-2 px-3 py-1 text-black hover:text-facebook-primary transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-lg hover:bg-blue-50"
             >
-              <span className="material-icons text-base text-black">share</span>
-              Share
+              <span className="material-icons text-xl">share</span>
+              <span className="font-medium">Share</span>
             </button>
+
             {!detailed && (
               <button
                 onClick={toggleComments}
-                className="inline-flex items-center gap-2 px-3 py-1 text-black hover:text-facebook-primary transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-lg hover:bg-blue-50"
               >
-                <span className="material-icons text-base text-black">comment</span>
-                {showComments ? 'Hide Comments' : 'Show Comments'}
+                <span className="material-icons text-xl">comment</span>
+                <span className="font-medium">{showComments ? 'Hide Comments' : 'Show Comments'}</span>
               </button>
             )}
             
             {!detailed && (
               <Link
                 to={`/post/${post.id}`}
-                className="text-facebook-primary hover:text-facebook-hover transition-colors text-sm"
+                className="text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium"
               >
                 View Details
               </Link>
@@ -414,7 +415,7 @@ const PostCard = ({ post: initialPost, userId, detailed = false, onDelete, onUpd
           
           {/* Comments section */}
           {showComments && (
-            <div className="mt-4">
+            <div className="mt-6 bg-gray-50 rounded-lg p-4">
               <CommentForm
                 postId={post.id}
                 userId={userId}
