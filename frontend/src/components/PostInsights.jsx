@@ -55,5 +55,11 @@ const InsightCard = ({ label, value }) => (
   </div>
 );
 
-
+/*const InsightCard = ({ label, value }) => (
+  <div className="bg-white p-3 rounded-md shadow-sm">
+    <p className="text-sm text-gray-600">{label}</p>
+    <p className="text-xl font-bold text-gray-900">{value}</p>
+  </div>
+);
+*/
 export default PostInsights;
